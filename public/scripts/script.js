@@ -11,18 +11,20 @@ method: 'POST',
 url: '/testPost',
 data: objectToSend
 });
-$scope.nameIn ='';
-$scope.locationIn='';
+  $scope.nameIn = null;
+  $scope.locationIn=null;
+
 };
 $scope.getRecords = function(){
-$.http({
+$http({
 method: 'GET',
 url: '/getRecords',
 }).then( function( response ){
-$scope.allTheRecords = response;
+$scope.allTheRecords = response.data;
 console.log( $scope.allTheRecords );
-}), function myError( response ){
+});
+function myError( response ){
 console.log( response.statusText );
-};
+}
 };
 }]);
